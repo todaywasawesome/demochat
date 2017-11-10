@@ -10,6 +10,7 @@ A self-hosted chat app for small teams or big Gal by [Security Compass][seccom].
 
 
 ## Features and Stuff
+test
 
 * BYOS (bring your own server)
 * Persistent messages
