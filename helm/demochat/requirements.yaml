@@ -3,6 +3,5 @@ dependencies:
   enabled: false
   import-values: null
   name: mongo
-  repository: Razielit
   tags: null
   version: 0.2.0
