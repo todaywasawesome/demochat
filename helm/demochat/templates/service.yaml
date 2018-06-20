@@ -8,6 +8,7 @@ metadata:
     chart: "{{ $local.Chart.Name }}-{{ $local.Chart.Version | replace "+" "_" }}"
     app: {{$local.Release.Name}}
     release: {{$local.Release.Name}}
+    version: '{{$track.image.version}}'
     heritage: Tiller
 spec:
   type: {{ $local.Values.service.type }}
