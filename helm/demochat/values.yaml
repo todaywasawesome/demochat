@@ -1,0 +1,46 @@
+# Default values for mongo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+deployment:
+  - track: release
+    image:
+      repository: r.cfcr.io/todaywasawesome/containers101/demochat
+      tag: 'master'
+      version: 'canary'
+      pullSecret: codefresh-generated-r.cfcr.io-cfcr-helmchat
+  # - track: canary
+  #   image:
+  #     repository: r.cfcr.io/todaywasawesome/todaywasawesome/demochat
+  #     tag: 'master-5937127'
+  #     version: 'master-5937127'
+  #     pullSecret: codefresh-generated-r.cfcr.io-cfcr-helmchat
+
+replicaCount: 1
+imagePullSecret: codefresh-generated-r.cfcr.io-cfcr-helmchat
+image:
+  pullPolicy: Always
+service:
+  name: demochat
+  type: ClusterIP
+  externalPort: 80
+  internalPort: 5000
+ingress:
+  enabled: false
+  # Used to create Ingress record (should used with service.type: ClusterIP).
+  hosts:
+    - minikube
+  annotations:
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  tls:
+    # Secrets must be manually created in the namespace.
+    # - secretName: chart-example-tls
+    #   hosts:
+    #     - chart-example.local
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
