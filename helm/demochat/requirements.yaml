@@ -3,6 +3,6 @@ dependencies:
   enabled: false
   import-values: null
   name: mongo
-  repository: https://razielt77.github.com/helm
+  repository: razielit
   tags: null
   version: 0.2.0
