@@ -22,4 +22,3 @@ spec:
     #     port:
     #       number: 80
     #   weight: 50
----
