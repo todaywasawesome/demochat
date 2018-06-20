@@ -1,7 +1,0 @@
-dependencies:
-- condition: ""
-  enabled: false
-  import-values: null
-  name: mongo
-  tags: null
-  version: 0.2.0
