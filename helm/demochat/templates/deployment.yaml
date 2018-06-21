@@ -28,6 +28,6 @@ spec:
         - containerPort: {{ $local.Values.service.internalPort }}
         env:
         - name: MONGO_HELM
-          value: "mongo"
+          value: "mongodb"
 ---
 {{ end }}
