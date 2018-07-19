@@ -15,7 +15,7 @@ spec:
         app: "{{.Release.Name}}-mongo"
     spec:
       containers:
-      - name: "{{.Release.Name}}-mongo"
+      - name: "{{.Release.Name}}"
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:

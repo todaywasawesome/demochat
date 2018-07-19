@@ -1,28 +1,16 @@
 # Default values for mongo.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-deployment:
-  - track: release
-    image:
-      repository: r.cfcr.io/todaywasawesome/containers101/demochat
-      tag: 'master'
-      version: 'canary'
-      pullSecret: codefresh-generated-r.cfcr.io-cfcr-helmchat
-  # - track: canary
-  #   image:
-  #     repository: r.cfcr.io/todaywasawesome/todaywasawesome/demochat
-  #     tag: 'master-5937127'
-  #     version: 'master-5937127'
-  #     pullSecret: codefresh-generated-r.cfcr.io-cfcr-helmchat
-
 replicaCount: 1
-imagePullSecret: codefresh-generated-r.cfcr.io-cfcr-helmchat
+imagePullSecret: codefresh-generated-r.cfcr.io-cfcr-default
 image:
-  pullPolicy: Always
+  repository: r.cfcr.io/razielt77_github/containers101/demochat
+  tag: master
+  pullPolicy: IfNotPresent
 service:
   name: demochat
-  type: ClusterIP
-  externalPort: 80
+  type: LoadBalancer
+  externalPort: 5000
   internalPort: 5000
 ingress:
   enabled: false

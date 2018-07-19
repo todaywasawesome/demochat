@@ -12,14 +12,14 @@ spec:
   - helmchat.demo4591.codefresh.io
   http:
   - route:
-    # - destination:
-    #     host: demochat-3a4e633
-    #     port:
-    #       number: 80
-    #   weight: 100
+    - destination:
+        host: demochat-master-1ae9ac6
+        port:
+          number: 80
+      weight: 100
     # - destination:
     #     host: demochat-canary
     #     port:
     #       number: 80
     #   weight: 50
-    
+---

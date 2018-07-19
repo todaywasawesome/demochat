@@ -1,33 +1,30 @@
-{{ $local := . }}
-{{- range $index, $track := .Values.deployment }}
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: {{$local.Release.Name}}-{{$track.image.version}}
+  name: {{.Release.Name}}
   labels:
-    chart: "{{ $local.Chart.Name }}-{{ $local.Chart.Version | replace "+" "_" }}"
-    app: {{$local.Release.Name}}-{{$track.image.version}}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    app: {{.Release.Name}}
 spec:
-  replicas: {{ $local.Values.replicaCount }}
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-        app: {{$local.Release.Name}}-{{$track.image.version}}
-        release: {{$local.Release.Name}}
+        app: {{.Release.Name}}
+        release: {{.Release.Name}}
         heritage: Tiller
     spec:
-      {{- if $track.image.pullSecret }}
+      {{- if .Values.imagePullSecret }}
       imagePullSecrets:
-      - name: "{{$track.image.pullSecret}}"
+      - name: "{{.Values.imagePullSecret}}"
       {{- end }}
       containers:
-      - name: {{$local.Release.Name}}-{{$track.image.version}}
-        image: "{{ $track.image.repository }}:{{ $track.image.tag }}"
-        imagePullPolicy: {{ $local.Values.image.pullPolicy }}
+      - name: {{.Release.Name}}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
-        - containerPort: {{ $local.Values.service.internalPort }}
+        - containerPort: {{ .Values.service.internalPort }}
         env:
         - name: MONGO_HELM
-          value: "mongodb"
----
-{{ end }}
+          value: "{{.Release.Name}}-mongo"
+
